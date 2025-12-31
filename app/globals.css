@@ -1,0 +1,213 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+/* Noto Sans Ethiopic for Amharic */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Ethiopic:wght@400;500;600;700&display=swap');
+
+:root {
+  --font-outfit: 'Outfit', sans-serif;
+  --font-space-grotesk: 'Space Grotesk', sans-serif;
+  
+  /* Nordic Medical Colors */
+  --nordic-primary: #0c8fe9;
+  --nordic-dark: #072849;
+  --nordic-light: #f0f7ff;
+  --frost-white: #f8fafc;
+  --medical-teal: #14b8a6;
+  --medical-green: #22c55e;
+  --medical-red: #ef4444;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-outfit);
+  background: var(--frost-white);
+  color: #1e293b;
+  line-height: 1.6;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #e2e8f0;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #0c8fe9, #072849);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #0070c7;
+}
+
+/* Nordic Glow Effect */
+@layer utilities {
+  .nordic-glow {
+    box-shadow: 0 0 40px rgba(12, 143, 233, 0.15);
+  }
+  
+  .nordic-glow-strong {
+    box-shadow: 0 0 60px rgba(12, 143, 233, 0.25);
+  }
+  
+  .text-gradient {
+    background: linear-gradient(135deg, #0c8fe9 0%, #14b8a6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .glass-card {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+  }
+  
+  .glass-dark {
+    background: rgba(7, 40, 73, 0.95);
+    backdrop-filter: blur(20px);
+  }
+}
+
+/* Amharic Typography */
+.font-amharic {
+  font-family: 'Noto Sans Ethiopic', 'Nyala', sans-serif;
+  line-height: 1.8;
+}
+
+/* Animation Classes */
+@layer utilities {
+  .animate-delay-100 { animation-delay: 100ms; }
+  .animate-delay-200 { animation-delay: 200ms; }
+  .animate-delay-300 { animation-delay: 300ms; }
+  .animate-delay-400 { animation-delay: 400ms; }
+  .animate-delay-500 { animation-delay: 500ms; }
+  
+  /* Line Clamp */
+  .line-clamp-4 {
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+/* Medical Card Hover Effects */
+.service-card {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.service-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 25px 50px -12px rgba(12, 143, 233, 0.15);
+}
+
+/* Button Styles */
+.btn-primary {
+  @apply bg-nordic-600 text-white px-6 py-3 rounded-full font-medium
+         transition-all duration-300 hover:bg-nordic-700 hover:shadow-lg
+         hover:shadow-nordic-500/25 active:scale-95;
+}
+
+.btn-secondary {
+  @apply border-2 border-nordic-600 text-nordic-600 px-6 py-3 rounded-full font-medium
+         transition-all duration-300 hover:bg-nordic-600 hover:text-white active:scale-95;
+}
+
+.btn-emergency {
+  @apply bg-medical-red text-white px-6 py-3 rounded-full font-medium
+         transition-all duration-300 hover:bg-red-600 hover:shadow-lg
+         hover:shadow-red-500/25 active:scale-95;
+}
+
+/* Section Styles */
+.section-padding {
+  @apply py-16 md:py-24 px-4 md:px-8;
+}
+
+/* Pulse Animation for Emergency */
+.pulse-emergency {
+  animation: pulse-emergency 2s infinite;
+}
+
+@keyframes pulse-emergency {
+  0% {
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 15px rgba(239, 68, 68, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0);
+  }
+}
+
+/* Map Container */
+.map-container {
+  @apply rounded-2xl overflow-hidden shadow-xl border-4 border-white;
+}
+
+/* Review Cards */
+.review-card {
+  @apply bg-white rounded-2xl p-6 shadow-lg transition-all duration-300;
+}
+
+.review-card:hover {
+  @apply shadow-xl -translate-y-1;
+}
+
+/* WhatsApp Button Animation */
+.whatsapp-float {
+  animation: whatsapp-bounce 2s infinite;
+}
+
+@keyframes whatsapp-bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+/* Form Styles */
+input, textarea, select {
+  @apply w-full px-4 py-3 rounded-xl border border-frost-300 
+         transition-all duration-300 focus:outline-none focus:border-nordic-500
+         focus:ring-4 focus:ring-nordic-500/10;
+}
+
+/* Hero Pattern Overlay */
+.hero-pattern {
+  background-image: 
+    radial-gradient(circle at 20% 50%, rgba(12, 143, 233, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(20, 184, 166, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 40% 80%, rgba(12, 143, 233, 0.05) 0%, transparent 30%);
+}
+
+/* Medical Cross Pattern */
+.medical-pattern {
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%230c8fe9' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+
